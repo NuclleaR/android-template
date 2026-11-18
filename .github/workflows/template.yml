@@ -1,0 +1,35 @@
+# Only in the template repository: customizes it as each variant and builds the result,
+# so a dependency update or a change to customize.sh can't break a project made from it.
+name: Template
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  variant:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [phone, tv]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Customize
+        run: ./customize.sh com.acme.check.app "Check App" ${{ matrix.variant == 'tv' && '--tv' || '' }}
+      - name: Nothing of the template is left
+        run: |
+          ! grep -rIl --exclude-dir=.git --exclude-dir=.gradle "com\.example\.template\|AppTemplate" .
+          test ! -e customize.sh && test ! -d variants
+      - run: ./gradlew appUnitTest lintKotlin :app:lintDebug :app:assembleDebug

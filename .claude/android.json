@@ -1,0 +1,4 @@
+{
+  "package": "com.example.template.debug",
+  "installTask": ":app:installDebug"
+}
