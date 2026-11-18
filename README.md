@@ -29,6 +29,9 @@ Without a GitHub repository: `git clone --depth 1 https://github.com/NuclleaR/an
 variant when asked, and deletes itself, the `variants/` folder and the template-only workflow. With Claude Code and the
 `android` plugin from `NuclleaR/skills`, `/android:new` does all of this.
 
+Opening the project in Claude Code offers the `android` plugin from `NuclleaR/skills` (`.claude/settings.json`): skills
+for architecture, Gradle, tests, Compose and the agent emulator, and `/android:just` for `just` recipes.
+
 You need JDK 21 (Gradle downloads it through the foojay toolchain resolver when it's missing) and the Android SDK in
 `ANDROID_HOME` or `local.properties` (`sdk.dir=…`). No Android Studio needed.
 

@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "nucllear": {
+      "source": {
+        "source": "github",
+        "repo": "NuclleaR/skills"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "android@nucllear": true
+  }
+}

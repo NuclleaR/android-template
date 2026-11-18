@@ -32,6 +32,6 @@ AppTemplate is a multi-module Android app in Kotlin with Jetpack Compose, Metro 
 
 ## Skills
 
-With the `android` plugin (`/plugin install android@nucllear`), load the matching skill before working:
+The project's `.claude/settings.json` enables the `android` plugin from the `nucllear` marketplace. Load the matching skill before working:
 `architecture`, `gradle`, `testing`, `compose-ui`, `compose-previews`, `localization`, and `emulator` to run the
 app (configured in `.claude/android.json`).
